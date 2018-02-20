@@ -24,6 +24,7 @@ typedef enum {
 
 + (BOOL)setMode:(GSSwitcherMode)mode;
 
++ (int64_t)whichGraphicCard;
 + (BOOL)isUsingIntegratedGPU;
 + (BOOL)isUsingDiscreteGPU;
 + (BOOL)isUsingDynamicSwitching;

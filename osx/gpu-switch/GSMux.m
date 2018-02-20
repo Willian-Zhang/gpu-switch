@@ -345,12 +345,17 @@ static void dumpState(io_connect_t connect)
     return YES;
 }
 
-+ (BOOL)isUsingIntegratedGPU
++ (int64_t)whichGraphicCard
 {
     uint64_t output;
-    if (_switcherConnect == IO_OBJECT_NULL) return NO;
+    if (_switcherConnect == IO_OBJECT_NULL) return -1;
     getMuxState(_switcherConnect, muxGraphicsCard, &output);
-    return output != 0;
+    return output;
+}
+
++ (BOOL)isUsingIntegratedGPU
+{
+    return [self whichGraphicCard] != 0;
 }
 
 + (BOOL)isUsingDiscreteGPU
